@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pesan Untukmu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f6f7;
+      color: #5a4a4d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      user-select: none;
+    }
+    .container {
+      background: white;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(170,140,150,0.2);
+      padding: 30px 25px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: #bb6f92;
+      font-weight: 700;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #d9c8d9;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      transition: border-color 0.3s ease;
+      text-transform: uppercase;
+      color: #7a587a;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #bb6f92;
+      box-shadow: 0 0 8px #bb6f92aa;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 12px 35px;
+      background: #bb6f92;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .btn:hover:not(:disabled) {
+      background: #9b5875;
+    }
+    .error-message {
+      margin-top: 15px;
+      color: #c94a5b;
+      font-weight: 600;
+      font-size: 0.95rem;
+      height: 1.5em;
+    }
+    .slide {
+      display: none;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #5a4a4d;
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide p {
+      margin-bottom: 1rem;
+    }
+    .slide-footer {
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <div id="page-input">
+      <h2>Masukkan Nama Lengkap</h2>
+      <input type="text" id="nameInput" placeholder="" autocomplete="off" />
+      <button id="btnSubmit" class="btn">Submit</button>
+      <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <div id="page-slides" style="display:none;">
+      <div id="slideContainer"></div>
+      <div class="slide-footer">
+        <button id="btnNext" class="btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="backgroundMusic" src="komang.mp3" loop></audio>
+
+  <script>
+    const validNames = ["HANAN", "HANAN FARIDAH", "HANAN FARIDAH NUR", "HANAN FARIDAH NUR RAHAYU", "HNFRYU.NH", "DEDE RIZKI", "DEDE RIZKI ZAKARIA"];
+
+
+    const textMessage = `Assalamualaikum Warahmatullahi Wabarakatuh.
+
+Hello brok, sorry kalo gw cuma bisa ngomong dan menyampaikan sesuatu melalui pesan ini aja.
+Eh pertama-tama, happy graduation dah buat lu. Moga keterima di SMA impian dan semoga next-nya kita bisa 1 SMA lagi hehe.
+BTW dramus tadi lu keren banget asli, emang the real bakat terpendam dah.
+
+Oke, jadi gw mulai darimana nih jir? Bingung gw aseli. Kalo lu mau tau, gw nulis kek ginian butuh seminggu ajg. Gatau apa aja isi kepala yang pengen gw keluarin buat kek ginian doang hehe. Oke back to konteks.
+Dipikir-pikir, 3 tahun sekolah di Sadel kenapa kita sekelas cuma 2x ya? Harusnya 3x gasih??? Kan seru juga 3 tahun sekelas ama si pantomim, lucu, imut, bocil satu ini wkwk. Poin plus-nya juga bisa saling contek pas ujian awoakkw.
+BTW sorry banget ya Nan, buat kemaren gw gabisa ikut kerkel pameran di rumah lu. Gw sibuk bantuin sepupu gw hajatan hehe.
+Sorry juga gabisa dateng pas lu lagi duka kemarin. Sorry juga buat project kemaren lu jadi kerja 2 job, yang pertama maksa lu jadi aktor buat bikin video project kemarin, yang padahal itu lu lagi cape-cape-nya buat mading. Sorry juga gw nolak jadi MC buat pameran kemarin 🙏.
+
+Dan gw minta maaf yang sebesar-besarnya kalo selama setahun ini atau mungkin sebelumnya gw sering buat kesel ama lu, susah diajak kerkel-nya, males ngerjain apa yang lu suruh, sering buat lu ngambek, marah dsb karena susah diatur. Maaf yaa. Entah kenapa lucu kalo gangguin lu sebenernya wkwk.
+BTW disclaimer brok, gw nulis pesan ini ga ada maksud apa-apa, bukan buat nembak lu juga. Karena mungkin habis ini orang-orang yang liat gw kasih ginian ke lu, dikatanya gw nembak lu, kan anjg juga. Emang kalo ngasih ginian harus banget nembak cewek kah? "Km mw gk jd pcr ak" idwh, ga dulu deh.
+Kalau ditanya, untuk apa gw ngasih seniat ini? Yaa karena gw cuma pengen ngasih sesuatu aja ke orang yang mungkin berjasa di hidup gw dan bisa membuat pemikiran gw maju selangkah ke depan sih.
+Terpenting sebenernya gw nulis kayak gini cuma pengen luapin rasa emosi dan keluh kesah aja sih, ya bukan karena gw suka ama loe yaa (catat tu ajg), tapi lebih ke kagum aja.
+Kayak "gila hanan anak dardul keren banget, tiba-tiba monolog di depan podium, sendirian lagi bjir. Eh besoknya tiba-tiba ditunjuk lomba pantomim, sekali ikut langsung menang, mana Sertif-nya fls2n lagi." Kecil-kecil gacorr juga lu banh wkwk.
+Dan masih banyak hal lain juga yang gw respect dan kagum ama lu. Sungkem anak darwadi 🙏.
+
+Karena lu gw belajar, mungkin terkhusus untuk setahun ini di kelas 9C. Karena elooo gw ditunjuk mamih buat tampil di English Day. Jadi mau karena dipaksa eluuu, ajg juga mana ada ED tampil cuma 2 orang. Dikatanya ED sambil ngedate anying. Mana Julius dah cengin gw mulu, belum lagi orang-orang itu kayak orang gila, tiap deket dikit ama lu di cie-cie-in asw. Dah muak gw badjingan.
+Tapi di balik semua itu, ada satu hal yang sebenarnya gak bisa gw lupain. Kehadiran lu justru bikin semuanya jadi terasa lebih ringan. Justru karena ada lu di kelas bikin semangat belajar ga sie?
+
+Efek males sekolahnya jadi ilang karena bocil imut ini. Senyumnya bikin orang susah move on jir. Pantesan Dudi ga masuk-masuk, soalnya ga kuat liat senyuman Hanan di kelas gesd wkwkwk.
+Mantap bro, lanjutkan bakatmu... salah satunya bakat bikin senyuman yang bikin hati orang nyangkut dan susah banget dilupain (anjay).
+Mungkin itu juga alasan kenapa hal-hal yang tadinya bikin gw males, jadi bisa gue hadapin. Contohnya kerja kelompok juga sebenernya males juga kalo ga sekelompok ama lu. Ya karena tau sendiri lah orang-orang idiomt kek ginian susah banget diajak kerjasama-nya, apalagi diaturnya tuh kalo kelas lagi berisik, jadi males buang-buang energi. Jadi mendingan diem daripada ngurusin dia pada (fuck).
+
+
+Btw jangan sebar pesan ini ke orang lain ya. Ini hanya untuk gw dan lu aja yang tau. Lagi pun gabakal ada yang bisa buka nih web juga kan wkwk.
+Bye
+`;
+
+    const rawParagraphs = textMessage.trim().split(/\n+/).map(p => p.trim()).filter(p => p.length > 0);
+
+// Paragraf awal dan akhir
+const firstSalam = rawParagraphs[0];
+
+// Ambil paragraf-paragraf utama kecuali yang mau digabung di slide terakhir
+const middleParagraphs = rawParagraphs.slice(1, rawParagraphs.length - 7);
+
+// Gabung 7 paragraf terakhir jadi satu paragraf panjang
+const lastSlideText = rawParagraphs.slice(rawParagraphs.length - 7).join(' ');
+
+let slides = [];
+slides.push([`<h3>${firstSalam}</h3>`]);
+
+// Bagi middleParagraphs menjadi slide berisi 4 paragraf per slide
+for (let i = 0; i < middleParagraphs.length; i += 4) {
+  slides.push(middleParagraphs.slice(i, i + 4));
+}
+slides.push([
+  `<p> Mungkin itu juga alasan kenapa hal-hal yang tadinya bikin gw males, jadi bisa gue hadapin. Contohnya kerja kelompok juga sebenernya males juga kalo ga sekelompok ama lu.</p>
+  <p>Ya karena tau sendiri lah orang-orang idiomt kek ginian susah banget diajak kerjasama-nya, apalagi diaturnya tuh kalo kelas lagi berisik, jadi males buang-buang energi. Jadi mendingan diem daripada ngurusin dia pada (fuck)</p>`
+]);
+  slides.push([
+  `<p>Mungkin itu aja yang pengen gw sampein. Gw tau lu pasti udah jijik, muak baca pesan alay kek gini. Apalagi gw.</p>`
+]);
+  slides.push([
+  `<p>Pokoknya, semoga kedepannya lu jadi lebih baik lagi dah, semoga sukses dan makin banyak lomba yang lu menangin. Mentok-mentok juara pantomin internasional wkwk.</p>
+<p>Sekali lagi gw minta maaf yang sebesar-besarnya untuk 3 tahun ini atau 2 tahun kita sekelas bareng.
+Dan ini terakhir kali kita ketemu mungkin. Kalo ketemu lagi ya paling di SMA yang sama nanti, entah itu di 33, 94, 84 atau 95. IDK. Gw harap kita bisa sama-sama lagi di salah satu SMA itu (kali).</p>`
+]);
+  slides.push([
+  `<p>Thank You atas bimbingan, omelan dan senyumannya. Ati-ati dah wajah imut-imutnya bikin ngangenin. <p>xixixi</p>.</p>`
+]);
+  slides.push([
+  `<p>Byeee</p>`
+]);
+slides.push([
+  `<h3> Assalamualaikum Warahmatulahi Wabarakatuh</h3>`
+]);
+  
+// Jika ingin, bisa juga tambahkan slide terakhir dengan salam perpisahan
+slides.push([
+  `<p>Salam <strong>Dede Rizki Zakaria</strong><br><em>– teman smp-mu</em></p>`
+]);
+
+
+    const pageInput = document.getElementById('page-input');
+    const pageSlides = document.getElementById('page-slides');
+    const slideContainer = document.getElementById('slideContainer');
+    const btnSubmit = document.getElementById('btnSubmit');
+    const btnNext = document.getElementById('btnNext');
+    const nameInput = document.getElementById('nameInput');
+    const errorMessage = document.getElementById('errorMessage');
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slideContainer.innerHTML = '';
+      slides[index].forEach(p => {
+        const pEl = document.createElement('p');
+        pEl.innerHTML = p;
+        slideContainer.appendChild(pEl);
+      });
+      window.scrollTo(0, 0);
+      btnNext.textContent = (index === slides.length - 1) ? 'Selesai' : 'Next';
+    }
+
+    btnSubmit.addEventListener('click', () => {
+      const nameVal = nameInput.value.trim().toUpperCase();
+      if (validNames.includes(nameVal))
+ {
+        errorMessage.textContent = '';
+        pageInput.style.display = 'none';
+        pageSlides.style.display = 'block';
+        currentSlide = 0;
+        showSlide(currentSlide);
+        const music = document.getElementById('backgroundMusic');
+music.currentTime = 0;
+music.play().catch(() => {
+  document.body.addEventListener('click', () => {
+    music.play();
+  }, { once: true });
+});
+      } else {
+        errorMessage.textContent = 'sorry, ini bukan buat lu bro.';
+      }
+    });
+
+    btnNext.addEventListener('click', () => {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        showSlide(currentSlide);
+      } else {
+        alert('Thank you udah baca dari awal sampe akhir. Maaf web nya jelek, baru belajar soalnya🙏');
+        window.location.reload();
+      }
+    });
+
+    nameInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.toUpperCase();
+    });
+  </script>
+</body>
+</html>
